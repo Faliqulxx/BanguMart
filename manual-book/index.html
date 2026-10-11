@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>BanguMart POS - Manual Book & Panduan Penggunaan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #F7F7F5;
+      color: #1F2933;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page {
+      width: 297mm;
+      height: 210mm;
+      page-break-after: always;
+      position: relative;
+      background: #FFFFFF;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 16mm 18mm 14mm 18mm;
+    }
+
+    /* Cover Page */
+    .page.cover {
+      background: linear-gradient(135deg, #1F2933 0%, #111827 100%);
+      color: #FFFFFF;
+      justify-content: space-between;
+      padding: 24mm;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cover-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .cover-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: #F5A800;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1F2933;
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .cover-badge {
+      background: rgba(245, 168, 0, 0.2);
+      border: 1px solid rgba(245, 168, 0, 0.4);
+      color: #F5A800;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .cover-center {
+      max-width: 820px;
+    }
+
+    .cover-title {
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .cover-title span {
+      color: #F5A800;
+    }
+
+    .cover-subtitle {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #9CA3AF;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .cover-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cover-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #E5E7EB;
+    }
+
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 16px;
+      font-size: 11px;
+      color: #9CA3AF;
+    }
+
+    /* Page Header */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #ECECE8;
+      margin-bottom: 12px;
+      height: 38px;
+    }
+
+    .page-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #1F2933;
+    }
+
+    .page-brand-icon {
+      width: 22px;
+      height: 22px;
+      background: #F5A800;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: #1F2933;
+    }
+
+    .page-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #6B7280;
+      font-weight: 700;
+    }
+
+    .page-tag {
+      background: #FFF7E0;
+      border: 1px solid #FDEBB8;
+      color: #B45309;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Content Layout: 2 Columns (Image on Left, Content on Right) */
+    .page-content {
+      display: grid;
+      grid-template-columns: 53% 47%;
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    /* Left Column: Screenshot Frame */
+    .col-image {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .browser-frame {
+      background: #FFFFFF;
+      border-radius: 12px;
+      border: 1.5px solid #E5E7EB;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .browser-header {
+      background: #F3F4F6;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #EF4444; }
+    .dot-yellow { background: #F59E0B; }
+    .dot-green { background: #10B981; }
+
+    .browser-url {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #6B7280;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .browser-body {
+      background: #F9FAFB;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .browser-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      margin-top: 6px;
+      font-size: 10px;
+      color: #6B7280;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Right Column: Explanations */
+    .col-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-left: 6px;
+    }
+
+    .info-header {
+      margin-bottom: 8px;
+    }
+
+    .feature-category {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #F5A800;
+      margin-bottom: 2px;
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1F2933;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: #4B5563;
+      font-weight: 500;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin: 8px 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #F7F7F5;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid #ECECE8;
+    }
+
+    .feature-icon-badge {
+      width: 20px;
+      height: 20px;
+      background: #1F2933;
+      color: #F5A800;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 900;
+      shrink: 0;
+      margin-top: 1px;
+    }
+
+    .feature-item-content {
+      flex: 1;
+    }
+
+    .feature-item-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #1F2933;
+      margin-bottom: 1px;
+    }
+
+    .feature-item-detail {
+      font-size: 10px;
+      line-height: 1.35;
+      color: #6B7280;
+    }
+
+    .callout-box {
+      background: #FFF7E0;
+      border: 1.5px solid #FDEBB8;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .callout-icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .callout-text {
+      font-size: 10px;
+      line-height: 1.4;
+      color: #92400E;
+    }
+
+    .callout-text strong {
+      color: #78350F;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px solid #ECECE8;
+      margin-top: 8px;
+      font-size: 9.5px;
+      color: #9CA3AF;
+      height: 22px;
+    }
+
+    .page-footer strong {
+      color: #4B5563;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="page cover">
+    <div class="cover-top">
+      <div class="cover-logo">
+        <div class="cover-logo-icon">B</div>
+        <span>Bangu<span style="color:#F5A800;">Mart</span> POS</span>
+      </div>
+      <div class="cover-badge">Buku Panduan Pengguna (User Manual)</div>
+    </div>
+
+    <div class="cover-center">
+      <h1 class="cover-title">
+        Panduan Lengkap Sistem POS<br>
+        <span>Toko Bangunan & Material</span>
+      </h1>
+      <p class="cover-subtitle">
+        Dokumentasi resmi alur kerja kasir, multi-satuan material, otorisasi diskon peran, kalkulator estimasi konstruksi, manajemen piutang kontraktor, dan pengiriman armada surat jalan.
+      </p>
+
+      <div class="cover-pills">
+        <div class="cover-pill">✓ Kasir Fullscreen Tanpa Scroll</div>
+        <div class="cover-pill">✓ Multi-Satuan (Sak/Palet/m3/Rit)</div>
+        <div class="cover-pill">✓ Diskon Rp & % (Owner vs Kasir)</div>
+        <div class="cover-pill">✓ Aging Piutang Kontraktor</div>
+        <div class="cover-pill">✓ Surat Jalan & Armada Sopir</div>
+        <div class="cover-pill">✓ Estimator Kebutuhan Material</div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        <p><strong>BanguMart POS v0.1.0</strong> • Edisi Toko Bangunan & Retail Proyek</p>
+        <p>Pengembang: Tim Antigravity Engineering • Gresik / Jawa Timur</p>
+      </div>
+      <div style="text-align: right;">
+        <p>Format Dokumen: <strong>PDF Resmi</strong></p>
+        <p>Oktober 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE PAGES -->
+  
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#F5A80020; color:#F5A800; border-color:#F5A80040;">Multi-Role Access</span>
+        <span>Halaman 2</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/login</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/00-login.png" alt="Halaman Masuk & Autentikasi Peran" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 1: Tampilan antarmuka Halaman Masuk & Autentikasi Peran</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Akses & Keamanan</div>
+          <h2 class="feature-title">Halaman Masuk & Autentikasi Peran</h2>
+          <p class="feature-desc">Gerbang masuk aplikasi POS dengan desain visual toko bangunan, keamanan sandi, dan simulasi pergantian peran cepat.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Desain Split-Screen Modern</div>
+              <div class="feature-item-detail">Sisi kiri menampilkan ilustrasi toko bangunan Mitra Bangunan Material Jaya dan sisi kanan kartu formulir masuk bernuansa hangat.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Simulasi Peran Cepat (1-Klik)</div>
+              <div class="feature-item-detail">Tombol pintas untuk langsung memilih akun demo: Owner (Budi Santoso), Kasir (Rina), Gudang (Hendra), atau Sopir (Pak Joko).</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Fitur Lupa Kata Sandi Terintegrasi</div>
+              <div class="feature-item-detail">Modal interaktif untuk simulasi pengiriman tautan instruksi pemulihan kata sandi ke email terdaftar pengguna.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Keamanan & Visibilitas Sandi</div>
+              <div class="feature-item-detail">Dilengkapi toggle lihat/sembunyikan kata sandi serta validasi kelengkapan isian sebelum diarahkan ke sistem POS.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Pilih profil peran yang sesuai untuk menguji batasan hak akses diskon dan wewenang operasional toko.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 2 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#F5A80020; color:#F5A800; border-color:#F5A80040;">Fitur Utama</span>
+        <span>Halaman 3</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/01-dashboard.png" alt="Dashboard & Ringkasan Performa Toko" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 2: Tampilan antarmuka Dashboard & Ringkasan Performa Toko</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Ringkasan Eksekutif</div>
+          <h2 class="feature-title">Dashboard & Ringkasan Performa Toko</h2>
+          <p class="feature-desc">Pusat komando dan pemantauan performa bisnis toko bangunan secara real-time harian dan mingguan.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">KPI Metrik Utama</div>
+              <div class="feature-item-detail">Menampilkan Total Penjualan Hari Ini, Jumlah Transaksi, Estimasi Margin Laba Kotor, dan Pesanan yang Perlu Dikirim hari ini.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Grafik Tren Penjualan 7 Hari</div>
+              <div class="feature-item-detail">Visualisasi grafik omset mingguan untuk menganalisis kenaikan atau penurunan penjualan secara cepat.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Peringatan Stok Kritis (Restock Alert)</div>
+              <div class="feature-item-detail">Daftar produk material yang telah mencapai atau berada di bawah batas minimum stok (buffer limit).</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Aksi Cepat & Navigasi Terintegrasi</div>
+              <div class="feature-item-detail">Tombol pintas untuk langsung buka kasir POS, buat pesanan material, cek piutang, dan hitung estimasi material.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Gunakan filter peran di pojok kanan atas untuk melihat data dari sudut pandang Owner, Kasir, atau Gudang.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 3 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#10B98120; color:#10B981; border-color:#10B98140;">100% Fullscreen Viewport</span>
+        <span>Halaman 4</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/transaksi?tab=kasir</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/02-pos-kasir.png" alt="Kasir POS Multi-Satuan & Multi-Tier" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 3: Tampilan antarmuka Kasir POS Multi-Satuan & Multi-Tier</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Kasir & Transaksi</div>
+          <h2 class="feature-title">Kasir POS Multi-Satuan & Multi-Tier</h2>
+          <p class="feature-desc">Antarmuka kasir cepat dirancang tanpa scroll halaman luar, memudahkan kasir melayani antrean ramai tanpa hambatan.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Layout Ergonomis Pinned Footer</div>
+              <div class="feature-item-detail">Panel keranjang dan tombol "Bayar (F9)" selalu terkunci rapi di layar tanpa terdorong ke bawah, menjamin kelancaran kasir.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Multi-Satuan Material Bangunan</div>
+              <div class="feature-item-detail">Dukungan satuan bertingkat (Semen: Sak/Palet; Besi: Batang/Ikat; Pasir: m3/Rit; Cat: Kaleng/Pail) dengan konversi harga otomatis.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Tingkat Harga Tier Pelanggan</div>
+              <div class="feature-item-detail">Harga barang otomatis menyesuaikan tier pelanggan: Eceran standar, Grosir (toko/tukang), atau Kontraktor borongan.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Pencarian & Scan Barcode Cepat</div>
+              <div class="feature-item-detail">Cari barang berdasarkan nama, kode SKU material, merk, atau barcode dengan responsif instan.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Tekan tombol keyboard F9 untuk langsung membuka jendela pembayaran tanpa harus menggerakkan kursor mouse.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 4 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#6366F120; color:#6366F1; border-color:#6366F140;">Otorisasi PIN Pintar</span>
+        <span>Halaman 5</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/transaksi?tab=kasir&modal=payment</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/03-pembayaran-diskon.png" alt="Diskon Bertingkat (Rp & %) & Otorisasi Peran" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 4: Tampilan antarmuka Diskon Bertingkat (Rp & %) & Otorisasi Peran</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Pembayaran & Keamanan</div>
+          <h2 class="feature-title">Diskon Bertingkat (Rp & %) & Otorisasi Peran</h2>
+          <p class="feature-desc">Sistem pemberian diskon fleksibel nominal rupiah atau persentase dengan kontrol wewenang peran kasir dan owner.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Bentuk Diskon Ganda (Rp dan %)</div>
+              <div class="feature-item-detail">Bisa memberi diskon dalam Rupiah langsung atau persentase, dengan kalkulasi nominal otomatis.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Wewenang Penuh Owner (Bebas Potongan)</div>
+              <div class="feature-item-detail">Owner dapat langsung memotong harga tanpa batas, atau memakai fitur "Ubah Total" untuk mengetikkan harga akhir langsung.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Batas Kasir Maksimal Rp 1.000</div>
+              <div class="feature-item-detail">Kasir/karyawan berwenang memberi potongan pembulatan s/d Rp 1.000 langsung tanpa PIN jika diminta pelanggan.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Perlindungan PIN Owner (Dummy: 1234)</div>
+              <div class="feature-item-detail">Jika kasir memberi potongan di atas Rp 1.000 atau mengubah harga dasar, sistem mewajibkan verifikasi PIN Owner.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Gunakan tombol cepat "-Rp 500", "-Rp 1.000", atau "Bulatkan" untuk mempercepat transaksi kasir saat pembeli meminta kembalian pas.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 5 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#F59E0B20; color:#F59E0B; border-color:#F59E0B40;">Estimasi Otomatis SNI</span>
+        <span>Halaman 6</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/kalkulator</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/04-kalkulator-material.png" alt="Kalkulator Kebutuhan Material Proyek" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 5: Tampilan antarmuka Kalkulator Kebutuhan Material Proyek</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Fitur Spesial Material</div>
+          <h2 class="feature-title">Kalkulator Kebutuhan Material Proyek</h2>
+          <p class="feature-desc">Alat bantu pintar untuk menghitung estimasi kebutuhan semen, bata, pasir, keramik, dan cat berdasarkan dimensi proyek bangunan.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Pilihan Jenis Konstruksi Proyek</div>
+              <div class="feature-item-detail">Dukungan formula kalkulasi untuk Pasangan Dinding Bata, Plesteran Dinding, Pasang Keramik Lantai, dan Pengecatan.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Input Dimensi Luas & Tebal</div>
+              <div class="feature-item-detail">Cukup masukkan panjang, tinggi dinding, atau luas lantai ruangan untuk mendapatkan rincian kebutuhan material.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Rekomendasi Merk & Stok Toko</div>
+              <div class="feature-item-detail">Kalkulator otomatis memetakan estimasi material ke stok produk yang tersedia di gudang BanguMart beserta harganya.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Satu-Klik Masukkan ke Kasir POS</div>
+              <div class="feature-item-detail">Hasil hitungan material dapat langsung dimasukkan ke keranjang belanja kasir tanpa perlu input manual satu per satu.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Sangat cocok digunakan saat kontraktor atau tukang berkonsultasi kebutuhan material langsung di meja kasir.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 6 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#EF444420; color:#EF4444; border-color:#EF444440;">Manajemen Risiko</span>
+        <span>Halaman 7</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/pelanggan/piutang</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/05-piutang-kontraktor.png" alt="Manajemen Piutang & Kredit Kontraktor" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 6: Tampilan antarmuka Manajemen Piutang & Kredit Kontraktor</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Keuangan & Pelanggan</div>
+          <h2 class="feature-title">Manajemen Piutang & Kredit Kontraktor</h2>
+          <p class="feature-desc">Pengelolaan piutang tempo kontraktor dengan analisis umur piutang (aging schedule) dan monitoring limit kredit.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Analisis Umur Piutang (Aging)</div>
+              <div class="feature-item-detail">Pengelompokan faktur piutang: Belum Jatuh Tempo, 0-14 Hari, 15-30 Hari, dan >30 Hari untuk memprioritaskan penagihan.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Batas Kredit (Credit Limit) per Pelanggan</div>
+              <div class="feature-item-detail">Setiap kontraktor memiliki plafon kredit; transaksi baru akan dicek agar tidak melebihi sisa limit yang aman.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Riwayat Pembayaran Cicilan / Pelunasan</div>
+              <div class="feature-item-detail">Mencatat cicilan bertahap piutang beserta metode bayar (Transfer/Tunai) dan kwitansi resmi.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Notifikasi Jatuh Tempo Terintegrasi</div>
+              <div class="feature-item-detail">Lonceng notifikasi di Topbar memberi peringatan otomatis saat ada faktur kontraktor yang mendekati atau melewati jatuh tempo.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Periksa selalu sisa limit kredit pelanggan sebelum menyetujui transaksi tempo atau pengiriman material proyek jumlah besar.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 7 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#3B82F620; color:#3B82F6; border-color:#3B82F640;">Tracking Armada</span>
+        <span>Halaman 8</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/transaksi?tab=pengiriman</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/06-pengiriman-surat-jalan.png" alt="Surat Jalan & Manajemen Pengiriman Proyek" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 7: Tampilan antarmuka Surat Jalan & Manajemen Pengiriman Proyek</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Logistik & Armada</div>
+          <h2 class="feature-title">Surat Jalan & Manajemen Pengiriman Proyek</h2>
+          <p class="feature-desc">Sistem pengiriman armada material proyek dilengkapi nomor surat jalan resmi, jadwal rute, dan pemilihan sopir.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Manajemen Armada & Sopir</div>
+              <div class="feature-item-detail">Pilihan armada toko: Pickup L300 (W 8920 UZ) dan Truk Engkel (W 9102 PQ) beserta sopir penanggung jawab (Pak Joko / Pak Anto).</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Surat Jalan Otomatis (No. SJ)</div>
+              <div class="feature-item-detail">Penomoran surat jalan resmi terstandar (contoh: SJ-20261011-001) yang tertaut langsung dengan nomor nota kasir.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Tracking Status Pengiriman</div>
+              <div class="feature-item-detail">Status pengiriman terpadu: Disiapkan di Gudang, Dalam Perjalanan Pengantaran, hingga Terkirim dengan nama penerima.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Ongkos Kirim Otomatis / Manual</div>
+              <div class="feature-item-detail">Kalkulasi tarif ongkir berdasarkan armada dan jarak proyek dengan opsi gratis ongkir untuk pelanggan loyal.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Cetak surat jalan dalam format thermal atau A4 untuk diserahkan ke sopir sebagai bukti serah terima material di lokasi proyek.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 8 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#8B5CF620; color:#8B5CF6; border-color:#8B5CF640;">Konversi Instan</span>
+        <span>Halaman 9</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/transaksi?tab=penawaran</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/07-penawaran-quotation.png" alt="Surat Penawaran Harga (Quotation Resmi)" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 8: Tampilan antarmuka Surat Penawaran Harga (Quotation Resmi)</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Penjualan Proyek</div>
+          <h2 class="feature-title">Surat Penawaran Harga (Quotation Resmi)</h2>
+          <p class="feature-desc">Pembuatan surat penawaran harga resmi (Quotation) untuk tender proyek kontraktor dengan masa berlaku harga material.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Surat Penawaran Berstandar Formal</div>
+              <div class="feature-item-detail">Mencantumkan nomor penawaran, tanggal terbit, masa berlaku penawaran (7-30 hari), nama proyek, dan syarat pembayaran.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Kunci Harga Material Proyek</div>
+              <div class="feature-item-detail">Menjamin stabilitas harga material (seperti besi atau semen) selama masa berlakunya penawaran disepakati.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Konversi 1-Klik ke Pesanan (SO)</div>
+              <div class="feature-item-detail">Saat kontraktor menyetujui penawaran, kasir cukup menekan satu tombol untuk mengubahnya menjadi Sales Order resmi.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Langsung Buka di Kasir POS</div>
+              <div class="feature-item-detail">Bisa langsung memuat barang-barang di penawaran ke keranjang kasir POS untuk langsung ditransaksikan.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Kirim surat penawaran ke format dokumen A4 untuk dikirim via WhatsApp atau dicetak fisik saat tender proyek.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 9 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#06B6D420; color:#06B6D4; border-color:#06B6D440;">Manajemen Order</span>
+        <span>Halaman 10</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/transaksi?tab=pesanan</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/08-pesanan-so.png" alt="Pesanan Penjualan (Sales Order / SO)" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 9: Tampilan antarmuka Pesanan Penjualan (Sales Order / SO)</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Penjualan Proyek</div>
+          <h2 class="feature-title">Pesanan Penjualan (Sales Order / SO)</h2>
+          <p class="feature-desc">Manajemen pemesanan barang sebelum pengiriman atau sebelum pelunasan pembayaran oleh kontraktor/pembeli partai besar.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Booking Stok Material</div>
+              <div class="feature-item-detail">Mencatat komitmen kebutuhan material proyek pelanggan sehingga stok tidak terjual ke pembeli lain.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Tracking Status Pesanan</div>
+              <div class="feature-item-detail">Status terstruktur: Menunggu Konfirmasi, Dikonfirmasi / Siap Kirim, Selesai Ditransaksikan, atau Dibatalkan.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Integrasi Uang Muka (DP)</div>
+              <div class="feature-item-detail">Mendukung pencatatan DP awal dan penghitungan sisa pelunasan saat material tiba di lokasi proyek.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Konversi Cepat Menjadi Transaksi Kasir</div>
+              <div class="feature-item-detail">Tombol "Proses ke Kasir" memindahkan seluruh item pesanan ke pembayaran kasir dalam hitungan detik.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Gunakan SO untuk proyek bertahap (termin) di mana barang dikirim dalam beberapa rit pengantaran terpisah.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 10 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#10B98120; color:#10B981; border-color:#10B98140;">Multi-Satuan Material</span>
+        <span>Halaman 11</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/produk</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/09-manajemen-produk.png" alt="Katalog Produk & Master Multi-Satuan" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 10: Tampilan antarmuka Katalog Produk & Master Multi-Satuan</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Inventori & Master Data</div>
+          <h2 class="feature-title">Katalog Produk & Master Multi-Satuan</h2>
+          <p class="feature-desc">Pengelolaan data master barang toko bangunan dengan konfigurasi satuan turunan dan penetapan harga bertingkat.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Hierarki Multi-Satuan per Produk</div>
+              <div class="feature-item-detail">Mendefinisikan satuan terkecil dan satuan grosir (misal: 1 Sak = 1 Sak, 1 Palet = 40 Sak; 1 Rit = 6 m3).</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Harga Bertingkat 3-Tier</div>
+              <div class="feature-item-detail">Pengaturan terpisah untuk Harga Eceran, Harga Grosir (dengan minimal beli), dan Harga Khusus Kontraktor.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Manajemen Stok & Batas Minimum</div>
+              <div class="feature-item-detail">Menentukan ambang batas minimum stok (Buffer Stock) agar sistem mengirim notifikasi sebelum barang habis.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Pencarian & Filter Kategori Terlengkap</div>
+              <div class="feature-item-detail">Kategori spesifik toko bangunan: Semen & Perekat, Besi & Baja, Cat & Pelapis, Pipa & Sanitasi, Keramik & Lantai, Bahan Pokok.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Pastikan faktor pengali satuan turunan diisi dengan benar agar potongan stok kasir terhitung akurat dalam satuan dasar.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 11 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#F5A80020; color:#F5A800; border-color:#F5A80040;">Cetak Thermal & A4</span>
+        <span>Halaman 12</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/transaksi?tab=riwayat</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/10-riwayat-struk.png" alt="Riwayat Transaksi & Cetak Nota / Faktur A4" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 11: Tampilan antarmuka Riwayat Transaksi & Cetak Nota / Faktur A4</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Dokumen & Pembukuan</div>
+          <h2 class="feature-title">Riwayat Transaksi & Cetak Nota / Faktur A4</h2>
+          <p class="feature-desc">Pusat arsip seluruh transaksi penjualan toko bangunan dengan pencarian nomor nota dan cetak ulang dokumen.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Pencarian Riwayat Cepat</div>
+              <div class="feature-item-detail">Cari riwayat transaksi berdasarkan Nomor Nota (TRX-xxxx / INV-xxxx), nama pembeli, atau filter rentang tanggal.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Cetak Struk Thermal 80mm</div>
+              <div class="feature-item-detail">Format cetak struk kasir thermal ringkas dan rapi, cocok untuk printer kasir mini Epson, Panda, atau printer Bluetooth.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Cetak Faktur Pajak & Surat Jalan Formal A4</div>
+              <div class="feature-item-detail">Format faktur formal berlogo toko lengkap dengan NPWP, alamat toko, rincian PPN, tanda tangan kasir dan penerima.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Status Pelunasan Nota</div>
+              <div class="feature-item-detail">Penanda jelas transaksi Selesai (Lunas), Belum Lunas (Tempo), atau Dibatalkan.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Gunakan tombol "Salin Teks Nota" untuk mengirimkan rincian pembelian langsung ke chat WhatsApp pelanggan.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 12 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#3B82F620; color:#3B82F6; border-color:#3B82F640;">Analisis Finansial</span>
+        <span>Halaman 13</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/laporan</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/11-laporan-keuangan.png" alt="Laporan Penjualan & Analisis Laba Rugi" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 12: Tampilan antarmuka Laporan Penjualan & Analisis Laba Rugi</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Laporan & Finansial</div>
+          <h2 class="feature-title">Laporan Penjualan & Analisis Laba Rugi</h2>
+          <p class="feature-desc">Laporan komprehensif untuk menganalisis pendapatan kotor, margin laba bersih, dan produk yang paling menguntungkan.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Ringkasan Finansial Periode</div>
+              <div class="feature-item-detail">Informasi Total Omset Penjualan, Total HPP (Harga Pokok Penjualan), Laba Kotor, dan Rata-rata Nilai Transaksi.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Analisis Komposisi Pembayaran</div>
+              <div class="feature-item-detail">Distribusi metode bayar pelanggan: Tunai, QRIS, Transfer Bank, dan Porsi Penjualan Kredit Tempo.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Ranking Produk Terlaris (Top Selling)</div>
+              <div class="feature-item-detail">Daftar produk dengan volume penjualan tertinggi dan kontribusi laba terbesar bagi toko bangunan.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Ekspor Data Laporan</div>
+              <div class="feature-item-detail">Dukungan untuk mencetak atau mengunduh laporan keuangan toko untuk keperluan rekap pembukuan akuntansi.</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Owner dapat memantau perbandingan porsi tunai vs piutang untuk menjaga kesehatan arus kas (cash flow) toko.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 13 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">
+        <div class="page-brand-icon">B</div>
+        <span>BanguMart POS • Buku Panduan</span>
+      </div>
+      <div class="page-meta">
+        <span class="page-tag" style="background:#6B728020; color:#6B7280; border-color:#6B728040;">Kustomisasi Penuh</span>
+        <span>Halaman 14</span>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Kolom Kiri: Screenshot -->
+      <div class="col-image">
+        <div class="browser-frame">
+          <div class="browser-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">http://localhost:3000/pengaturan</div>
+          </div>
+          <div class="browser-body">
+            <img class="browser-img" src="./images/12-pengaturan-toko.png" alt="Pengaturan Toko & Manajemen Pengguna" />
+          </div>
+        </div>
+        <div class="image-caption">Gambar 13: Tampilan antarmuka Pengaturan Toko & Manajemen Pengguna</div>
+      </div>
+
+      <!-- Kolom Kanan: Penjelasan Fitur -->
+      <div class="col-info">
+        <div class="info-header">
+          <div class="feature-category">Konfigurasi Sistem</div>
+          <h2 class="feature-title">Pengaturan Toko & Manajemen Pengguna</h2>
+          <p class="feature-desc">Pusat konfigurasi identitas toko, ketentuan pajak PPN, tarif dasar armada logistik, dan profil tim karyawan.</p>
+        </div>
+
+        <div class="features-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">1</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Identitas & Kontak Toko</div>
+              <div class="feature-item-detail">Pengaturan nama toko (BanguMart), tagline, alamat cabang, nomor telepon resmi, dan NPWP untuk dokumen faktur.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">2</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Konfigurasi Pajak PPN (11%)</div>
+              <div class="feature-item-detail">Pengaturan aktivasi PPN transaksi, persentase tarif pajak, dan opsi apakah harga barang sudah termasuk pajak.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">3</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Tarif Dasar Armada Pengiriman</div>
+              <div class="feature-item-detail">Pengaturan tarif dasar pengantaran material dan tarif per kilometer untuk armada pickup dan truk engkel.</div>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon-badge">4</div>
+            <div class="feature-item-content">
+              <div class="feature-item-title">Manajemen Peran & Akses (Role)</div>
+              <div class="feature-item-detail">Daftar pengguna dengan peran Owner (Budi Santoso), Kasir (Rina Wulandari), Gudang (Hendra), dan Sopir (Pak Joko).</div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-text">
+            <strong>Tips Penggunaan:</strong> Perubahan pada identitas toko akan langsung tercermin pada kepala faktur dan struk kasir saat dicetak.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>BanguMart POS Manual Book • Dokumen Resmi Pengguna</span>
+      <span><strong>Halaman 14 dari 14</strong></span>
+    </div>
+  </div>
+    
+
+</body>
+</html>
